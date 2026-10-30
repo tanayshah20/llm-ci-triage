@@ -1,0 +1,22 @@
+# Dogfood: triage this repo's own failed CI runs.
+# workflow_run only fires from the copy of this file on the default branch.
+name: CI Triage
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
+jobs:
+  triage:
+    if: github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out the default branch (trusted code), never the PR head.
+      - uses: actions/checkout@v4
+      - uses: ./

@@ -1,0 +1,27 @@
+name: CI Failure Triage
+description: Explains why a GitHub Actions run failed and comments on the pull request.
+branding:
+  icon: alert-triangle
+  color: red
+
+inputs:
+  github-token:
+    description: Token used to read run logs and comment. The default workflow token is enough.
+    default: ${{ github.token }}
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install ci-triage
+      shell: bash
+      run: python -m pip install --quiet "${{ github.action_path }}"
+
+    - name: Triage the failed run
+      shell: bash
+      run: python -m ci_triage
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}

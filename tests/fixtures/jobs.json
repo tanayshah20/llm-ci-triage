@@ -1,0 +1,25 @@
+{
+  "total_count": 2,
+  "jobs": [
+    {
+      "id": 111,
+      "name": "test",
+      "html_url": "https://github.com/octo/sandbox/actions/runs/9876543210/job/111",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {"name": "Set up job", "number": 1, "status": "completed", "conclusion": "success"},
+        {"name": "Run pytest", "number": 4, "status": "completed", "conclusion": "failure"},
+        {"name": "Post Run actions/checkout@v4", "number": 5, "status": "completed", "conclusion": "success"}
+      ]
+    },
+    {
+      "id": 112,
+      "name": "lint",
+      "html_url": "https://github.com/octo/sandbox/actions/runs/9876543210/job/112",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": []
+    }
+  ]
+}

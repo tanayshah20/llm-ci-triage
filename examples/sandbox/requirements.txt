@@ -1,0 +1,2 @@
+# Deliberately does not exist on PyPI.
+this-package-does-not-exist-ci-triage==9.9.9
