@@ -10,6 +10,10 @@ from pydantic import BaseModel
 class Repository(BaseModel):
     full_name: str
 
+    @property
+    def owner(self) -> str:
+        return self.full_name.split("/", 1)[0]
+
 
 class PullRequestRef(BaseModel):
     number: int
@@ -17,6 +21,7 @@ class PullRequestRef(BaseModel):
 
 class WorkflowRun(BaseModel):
     id: int
+    workflow_id: int
     name: str
     html_url: str
     event: str
@@ -24,7 +29,7 @@ class WorkflowRun(BaseModel):
     head_branch: str | None = None
     run_attempt: int = 1
     conclusion: str | None = None
-    # Empty for PRs opened from forks; later weeks fall back to a head_sha lookup.
+    # Empty for PRs opened from forks; triage.find_pull_request falls back to a lookup.
     pull_requests: list[PullRequestRef] = []
     head_repository: Repository | None = None
 
