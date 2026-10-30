@@ -1,4 +1,4 @@
-# Replace YOUR_GITHUB_USERNAME with the account that owns the ci-triage repo.
+# Replace YOUR_GITHUB_USERNAME with the account that owns the llm-ci-triage repo.
 # workflow_run only fires from the copy of this file on the default branch.
 name: CI Triage
 
@@ -17,4 +17,4 @@ jobs:
     if: github.event.workflow_run.conclusion == 'failure'
     runs-on: ubuntu-latest
     steps:
-      - uses: YOUR_GITHUB_USERNAME/ci-triage@main
+      - uses: YOUR_GITHUB_USERNAME/llm-ci-triage@main

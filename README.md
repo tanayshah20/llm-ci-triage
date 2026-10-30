@@ -23,7 +23,7 @@ jobs:
     if: github.event.workflow_run.conclusion == 'failure'
     runs-on: ubuntu-latest
     steps:
-      - uses: YOUR_GITHUB_USERNAME/ci-triage@main
+      - uses: YOUR_GITHUB_USERNAME/llm-ci-triage@main
 ```
 
 ## Develop
