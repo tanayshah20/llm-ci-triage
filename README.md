@@ -2,7 +2,7 @@
 
 A GitHub Action that reads a failed CI run, explains the likely root cause, and comments on the pull request. It runs entirely on GitHub: no server, no API keys, no paid services.
 
-> **Status: week 1 of 10.** The Action currently writes a step summary listing the failed jobs and steps. Log reduction, LLM triage, and PR comments land in the coming weeks. See the [milestone plan](CI%20Failure%20Triage%20Assistant%20—%20Milestone%20Plan.md).
+> **Status: week 2 of 10.** The Action downloads each failed job's log and posts one PR comment per workflow, showing the failing step and the last error lines. It updates that comment on later runs. Log reduction and LLM triage land in the coming weeks. See the [milestone plan](CI%20Failure%20Triage%20Assistant%20—%20Milestone%20Plan.md).
 
 ## Use it in a repo
 

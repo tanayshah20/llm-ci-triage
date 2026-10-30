@@ -2,6 +2,7 @@
   "action": "completed",
   "workflow_run": {
     "id": 9876543210,
+    "workflow_id": 555,
     "name": "CI",
     "html_url": "https://github.com/octo/sandbox/actions/runs/9876543210",
     "event": "pull_request",

@@ -70,16 +70,17 @@ Four phases: plumbing (1–3), intelligence (4–6), product (7–8), ship (9–
 - [x] `action.yml` (composite) and a dogfood `triage.yml`. It parses `workflow_run`, skips non-failures, lists the failed jobs and steps, and writes a step summary.
 - [x] Sandbox repo template in `examples/sandbox/`: a broken test, a syntax error, a missing dependency and a timeout.
 - [x] `notebooks/00_colab_setup.ipynb`.
-- [ ] Push to GitHub, create the sandbox repo, and point its `triage.yml` at your repo.
+- [x] Push to GitHub, create the sandbox repo, and point its `triage.yml` at your repo.
 
 **Done when:** a failing sandbox run triggers the triage workflow, and its step summary lists the failed job and step.
 
-### Week 2 — Ingest logs and comment
+### Week 2 — Ingest logs and comment ✅ built, needs a live test
 
-- [ ] Download each failed job's log; strip ANSI codes and timestamps.
-- [ ] Find the PR: use `workflow_run.pull_requests`, then fall back to a `head_sha` lookup (the list is empty for fork PRs).
-- [ ] Post one PR comment and update it on re-runs (a hidden marker makes this idempotent).
-- [ ] Never check out or run PR code in the triage workflow.
+- [x] Download each failed job's log; strip ANSI codes and timestamps.
+- [x] Find the PR: use `workflow_run.pull_requests`, then fall back to an `owner:branch` lookup matched on `head_sha` (the list is empty for fork PRs).
+- [x] Post one PR comment per workflow and update it on re-runs. A hidden marker makes this idempotent, and its run id stops an older run that finishes late from overwriting a newer one.
+- [x] Treat log text as untrusted: show it in a code fence that can't be closed early, and never check out or run PR code in the triage workflow.
+- [ ] Live test: open a PR in the sandbox and confirm the comment appears and updates.
 
 **Done when:** every failed sandbox PR run gets one comment with the failing job, step and the last error lines.
 
